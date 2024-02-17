@@ -1,0 +1,32 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+indent_size = 4
+indent_style = space
+insert_final_newline = false
+max_line_length = 120
+tab_width = 4
+
+[*.java]
+indent_size = 3
+max_line_length = 90
+tab_width = 1
+ij_continuation_indent_size = 8
+ij_java_do_not_wrap_after_single_annotation = true
+ij_java_method_annotation_wrap = off
+ij_java_class_count_to_use_import_on_demand = 6
+
+[*.md]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = false
+
+[{Dockerfile,Dockerfile.template.erb,Dockerfile.sample}]
+indent_style = space
+indent_size = 4
+
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
