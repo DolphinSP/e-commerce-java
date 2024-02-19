@@ -11,9 +11,11 @@ import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -92,5 +94,41 @@ public class UserController {
         }
 
         return ResponseEntity.status(HttpStatus.CREATED).body(userService.save(user));
+    }
+
+    /**
+     * Updates a user in the system by their unique identifier.
+     *
+     * @param id The unique identifier of the user to update.
+     * @param user The User object representing the updated user information.
+     * @param result The BindingResult object containing any validation errors for the user object.
+     * @return A ResponseEntity object with a HttpStatus NO_CONTENT(204) status code if the update is successful,
+     * or a ResponseEntity object with a HttpStatus BAD_REQUEST (400) status code and a Map object containing
+     * field errors if there are any validation errors.
+     * @see User
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<Object> updateUser(@PathVariable UUID id, @Valid @RequestBody User user, @NotNull BindingResult result) {
+        Map<String, String> errors = new HashMap<>();
+
+        if (result.hasErrors()) {
+            result.getFieldErrors().forEach(error -> errors.put(error.getField(), error.getDefaultMessage()));
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+        }
+
+        userService.updateUserById(id, user);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    /**
+     * Deletes a user from the system by their unique identifier.
+     *
+     * @param id The unique identifier of the user to delete.
+     * @return A ResponseEntity object with a HttpStatus NO_CONTENT (204) status code if the deletion is successful.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteUser(@PathVariable UUID id) {
+        userService.deleteById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
