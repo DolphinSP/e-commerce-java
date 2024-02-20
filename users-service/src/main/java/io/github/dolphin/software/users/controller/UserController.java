@@ -36,6 +36,12 @@ import java.util.UUID;
  * The UserController class is responsible for handling HTTP requests related
  * to user management. It provides endpoints for retrieving users.
  */
+@ApiResponses(value = {
+        @ApiResponse(responseCode = "400", description = "Invalid input",
+                content = @Content),
+        @ApiResponse(responseCode = "404", description = "Not found",
+                content = @Content)
+})
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/users")
