@@ -11,6 +11,7 @@ import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -64,6 +65,7 @@ public class User {
     @NotBlank(message = "{NotBlank.user.phone}")
     @NotNull(message = "{NotNull.user.phone}")
     @Column(length = 15)
+    @Size(min = 10, max = 15, message = "{Size.user.phone}")
     private String phone;
 
     @NotBlank(message = "{NotBlank.user.email}")
