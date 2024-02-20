@@ -57,7 +57,7 @@ public class ResponseEntityExceptionHandler {
         Map<String, String> bodyResponse = new HashMap<>();
         bodyResponse.put("timestamp", String.valueOf(LocalDateTime.now()));
         bodyResponse.put("message", e.getMessage());
-        bodyResponse.put("status", String.valueOf(HttpStatus.NOT_FOUND.toString()));
+        bodyResponse.put("status", HttpStatus.NOT_FOUND.toString());
 
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(bodyResponse);
