@@ -30,6 +30,18 @@ This project is currently under development. The following features are currentl
 
 ## Features
 
+### Swagger Integration
+
+- [x] Swagger integration
+- [x] Swagger documentation
+- [x] Swagger UI
+- [x] Swagger configuration
+
+You can access the Swagger documentation at the following URL:
+
+URL: [http://localhost:8001/swagger-ui.html](http://localhost:8001/swagger-ui.html)
+
+You need to run the project to access the documentation.
 
 ## Technologies used
 
