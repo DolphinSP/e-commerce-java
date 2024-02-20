@@ -24,6 +24,7 @@ repositories {
 }
 
 val annotationJetbrains = "24.0.0"
+val openApiSpringDocVersion = "2.3.0"
 
 extra["springCloudVersion"] = "2023.0.0"
 
@@ -32,6 +33,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.jetbrains:annotations:$annotationJetbrains")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:$openApiSpringDocVersion")
     compileOnly("org.projectlombok:lombok")
     developmentOnly("org.springframework.boot:spring-boot-devtools")
     runtimeOnly("com.mysql:mysql-connector-j")
